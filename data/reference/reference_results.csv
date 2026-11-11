@@ -1,0 +1,26 @@
+scenario_id,metric,value,tolerance,units,threshold_usd,source,notes
+base,expected_loss,23227734.282000005,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+base,joint_attachment_probability,0.3911597654739334,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+base,exceedance_probability,0.3086826180601535,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+base,expected_stop_loss,9750298.225348536,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+base,both_exhausted_probability,0.00010180049276927835,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+independent,expected_loss,23227734.281999987,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+independent,joint_attachment_probability,0.3477622836418696,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+independent,exceedance_probability,0.3122212149822477,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+independent,expected_stop_loss,9054268.81910052,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+independent,both_exhausted_probability,4.2221468987250546e-05,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+common_shock,expected_loss,23227734.28199999,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+common_shock,joint_attachment_probability,0.49654601215810157,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+common_shock,exceedance_probability,0.30150652865207045,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+common_shock,expected_stop_loss,11016589.231627403,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+common_shock,both_exhausted_probability,0.00027668501794700227,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_stress,expected_loss,26479446.468562502,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_stress,joint_attachment_probability,0.5820865842501393,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_stress,exceedance_probability,0.33444620499775596,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_stress,expected_stop_loss,10818199.215466877,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_stress,both_exhausted_probability,0.00024042320577321178,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_cover,expected_loss,25868473.422000006,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_cover,joint_attachment_probability,0.3911597654739335,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_cover,exceedance_probability,0.3235813351399166,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_cover,expected_stop_loss,10727442.069993015,0.01,USD,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.
+rain_cover,both_exhausted_probability,0.0007285954170738497,1e-09,probability,25000000.0,internal_exact_enumeration,Internal exact enumeration of the illustrative synthetic model. Not an ADB benchmark target.

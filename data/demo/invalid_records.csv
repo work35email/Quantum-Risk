@@ -1,0 +1,17 @@
+invalid_record_id,source_file,referenced_id,data_quality_flag,include_in_calculations,problem,data_label,notes
+INV-001,exposure_data,EXP-BAD-MISSING,missing_value,no,insured_exposure_usd is blank,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-002,exposure_data,EXP-BAD-NEGATIVE,negative_exposure,no,insured_exposure_usd is -5000000,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-003,exposure_data,EXP-KG-BISHKEK-RES,duplicate_record,no,duplicates a valid exposure_id,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-004,hazard_events,EVT-BAD-PROB,invalid_probability,no,reported frequency 1.40 is above 1,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-005,hazard_events,EVT-0001-REG-KG-BISHKEK-RES,duplicate_record,no,reuses an event id pattern,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-006,insurance_contracts,CON-MISSING,incorrect_contract_reference,no,master_contract_id does not exist,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-007,insurance_contracts,CON-KG-MASTER,inconsistent_units,no,principal entered as 80 with unit millions beside USD rows,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-008,dependence_data,DEP-BAD-SHARE,invalid_probability,no,shock share 1.50 is above 1,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-009,scenario_data,bad scenario,invalid_identifier,no,scenario_id contains a space,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-010,exposure_data,EXP-BAD-CURRENCY,inconsistent_units,no,currency is KGS while the book is USD,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-011,hazard_events,EVT-BAD-LOSS,negative_exposure,no,ground_up_loss_usd is -120000,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-012,scenario_data,independent,invalid_probability,no,independent mode paired with shock share 0.40,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-013,insurance_contracts,CON-BAD-CAP,inconsistent_contract,no,payout limit is below the attachment,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-014,hazard_events,EVT-BAD-COUNTRY,incorrect_contract_reference,no,country Exampleland is outside the book,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-015,dependence_data,DEP-BAD-BLANK,missing_value,no,hazard name is blank,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.
+INV-016,exposure_data,EXP-BAD-REGION,incorrect_contract_reference,no,region_id does not match a catalogue region,synthetic_invalid_example,Held out of the demonstration calculations. Use only to show validation.

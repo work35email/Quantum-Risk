@@ -1,0 +1,11 @@
+country,hazard,annual_occurrence_probability,severity_given_event,conditional_probability,unit,data_label
+Kyrgyz Republic,earthquake,0.12,1,0.60,probability,synthetic_demo
+Kyrgyz Republic,earthquake,0.12,2,0.30,probability,synthetic_demo
+Kyrgyz Republic,earthquake,0.12,3,0.10,probability,synthetic_demo
+Kyrgyz Republic,precipitation,0.15,1,0.70,probability,synthetic_demo
+Kyrgyz Republic,precipitation,0.15,2,0.30,probability,synthetic_demo
+Tajikistan,earthquake,0.10,1,0.55,probability,synthetic_demo
+Tajikistan,earthquake,0.10,2,0.30,probability,synthetic_demo
+Tajikistan,earthquake,0.10,3,0.15,probability,synthetic_demo
+Tajikistan,precipitation,0.18,1,0.65,probability,synthetic_demo
+Tajikistan,precipitation,0.18,2,0.35,probability,synthetic_demo

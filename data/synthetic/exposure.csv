@@ -1,0 +1,3 @@
+country,insured_exposure,currency,data_label,notes
+Kyrgyz Republic,80000000,USD,synthetic_demo,Illustrative insured exposure set equal to the earthquake principal plus the precipitation principal. Not an observed insurance portfolio.
+Tajikistan,80000000,USD,synthetic_demo,Illustrative insured exposure set equal to the earthquake principal plus the precipitation principal. Not an observed insurance portfolio.

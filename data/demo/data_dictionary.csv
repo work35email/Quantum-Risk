@@ -1,0 +1,115 @@
+file_name,column_name,data_type,unit,required,description,example,data_label
+exposure_data.csv,exposure_id,text,USD,yes,"Stable id for one country, region and asset category.",EXP-REG-KG-BISHKEK-RES,synthetic_demo_seed_62
+exposure_data.csv,portfolio_book,text,text,yes,Which exposure book the row belongs to.,baseline,synthetic_demo_seed_62
+exposure_data.csv,country,text,text,yes,Kyrgyz Republic or Tajikistan.,Kyrgyz Republic,synthetic_demo_seed_62
+exposure_data.csv,region_id,text,text,yes,Synthetic region id. Not an official administrative code.,REG-KG-BISHKEK,synthetic_demo_seed_62
+exposure_data.csv,region_name,text,text,yes,Synthetic region name used in the demo.,Bishkek basin,synthetic_demo_seed_62
+exposure_data.csv,settlement_type,text,text,yes,"urban, valley or mountain. Drives the asset mix.",urban,synthetic_demo_seed_62
+exposure_data.csv,asset_category,text,text,yes,"residential, commercial, public_infrastructure or agriculture.",residential,synthetic_demo_seed_62
+exposure_data.csv,insured_exposure_usd,integer,USD,yes,Insured value in whole USD.,13708800,synthetic_demo_seed_62
+exposure_data.csv,eq_weight,number,text,yes,Region share of the country total before category split.,0.34,synthetic_demo_seed_62
+exposure_data.csv,currency,text,text,yes,Always USD in the valid book.,USD,synthetic_demo_seed_62
+exposure_data.csv,master_contract_id,text,text,yes,Country master contract that covers this exposure.,CON-KG-MASTER,synthetic_demo_seed_62
+exposure_data.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,valid,synthetic_demo_seed_62
+exposure_data.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,yes,synthetic_demo_seed_62
+exposure_data.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+exposure_data.csv,notes,text,text,yes,Short caveat for the row.,Synthetic insured exposure. Not an observed insurance portfolio.,synthetic_demo_seed_62
+hazard_events.csv,event_id,text,text,yes,One impact of one hazard occurrence on one region and category.,EVT-0001-KG-EAR-QUIET,synthetic_demo_seed_62
+hazard_events.csv,event_group_id,text,text,yes,Joins every regional impact of the same country-hazard-year.,GRP-001-KG-EAR,synthetic_demo_seed_62
+hazard_events.csv,catalogue_year,integer,text,yes,Year index in the 60-year synthetic catalogue. Not a calendar year.,1,synthetic_demo_seed_62
+hazard_events.csv,country,text,text,yes,Kyrgyz Republic or Tajikistan.,Kyrgyz Republic,synthetic_demo_seed_62
+hazard_events.csv,region_id,text,text,yes,Synthetic region id. Not an official administrative code.,NATIONAL,synthetic_demo_seed_62
+hazard_events.csv,region_name,text,text,yes,Synthetic region name used in the demo.,National year,synthetic_demo_seed_62
+hazard_events.csv,asset_category,text,text,yes,"residential, commercial, public_infrastructure or agriculture.",portfolio,synthetic_demo_seed_62
+hazard_events.csv,hazard,text,text,yes,earthquake or precipitation.,earthquake,synthetic_demo_seed_62
+hazard_events.csv,severity,integer,text,yes,"Earthquake 1 to 3, precipitation 1 to 2. Matches the contract steps.",0,synthetic_demo_seed_62
+hazard_events.csv,severity_label,text,text,yes,"moderate, severe or extreme.",no event,synthetic_demo_seed_62
+hazard_events.csv,impact_role,text,text,yes,"primary epicentre or storm centre, or a neighbouring affected region.",none,synthetic_demo_seed_62
+hazard_events.csv,occurrence_mechanism,text,text,yes,common_shock or idiosyncratic.,no_event,synthetic_demo_seed_62
+hazard_events.csv,joint_country_event,text,text,yes,yes when both countries have this hazard in the same catalogue year.,no,synthetic_demo_seed_62
+hazard_events.csv,primary_region_id,text,text,yes,Region drawn as the event centre.,,synthetic_demo_seed_62
+hazard_events.csv,ground_up_loss_usd,integer,USD,yes,Synthetic physical loss before the insurance schedule.,0,synthetic_demo_seed_62
+hazard_events.csv,contract_payout_usd,integer,USD,yes,This row's share of the country-hazard contractual payout.,0,synthetic_demo_seed_62
+hazard_events.csv,payout_status,text,USD,yes,"no_payout, partial_payout or coverage_exhausted.",no_payout,synthetic_demo_seed_62
+hazard_events.csv,master_contract_id,text,text,yes,Country master contract that covers this exposure.,CON-KG-MASTER,synthetic_demo_seed_62
+hazard_events.csv,currency,text,text,yes,Always USD in the valid book.,USD,synthetic_demo_seed_62
+hazard_events.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,valid,synthetic_demo_seed_62
+hazard_events.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,yes,synthetic_demo_seed_62
+hazard_events.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+hazard_events.csv,description,text,text,yes,Plain-language description. Not a historical event.,Synthetic quiet catalogue year 1: no earthquake trigger in Kyrgyz Republic. Not ,synthetic_demo_seed_62
+dependence_data.csv,dependence_id,text,text,yes,Id for a dependence statement.,DEP-EQ-BASE,synthetic_demo_seed_62
+dependence_data.csv,scope,text,text,yes,"portfolio, scenario or region_pair.",portfolio,synthetic_demo_seed_62
+dependence_data.csv,hazard,text,text,yes,earthquake or precipitation.,earthquake,synthetic_demo_seed_62
+dependence_data.csv,country_a,text,text,yes,"First country, or a region id when scope is region_pair.",Kyrgyz Republic,synthetic_demo_seed_62
+dependence_data.csv,country_b,text,text,yes,"Second country, or a region id when scope is region_pair.",Tajikistan,synthetic_demo_seed_62
+dependence_data.csv,dependence_mode,text,text,yes,"common_shock, independent or regional_cluster.",common_shock,synthetic_demo_seed_62
+dependence_data.csv,shock_share_of_min_marginal,number,text,yes,Share of the smaller occurrence probability assigned to the shared shock.,0.3,synthetic_demo_seed_62
+dependence_data.csv,use_in_baseline_model,text,text,yes,yes only for the two rows that define the baseline app model.,yes,synthetic_demo_seed_62
+dependence_data.csv,interpretation,text,text,yes,What the dependence row is for.,Baseline shared shock. Preserves each country's earthquake occurrence probabilit,synthetic_demo_seed_62
+dependence_data.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,valid,synthetic_demo_seed_62
+dependence_data.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,yes,synthetic_demo_seed_62
+dependence_data.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+dependence_data.csv,currency,text,text,yes,Always USD in the valid book.,USD,synthetic_demo_seed_62
+insurance_contracts.csv,contract_id,text,text,yes,Contract id.,CON-KG-MASTER,synthetic_demo_seed_62
+insurance_contracts.csv,contract_role,text,text,yes,master or excess_layer.,master,synthetic_demo_seed_62
+insurance_contracts.csv,country,text,text,yes,Kyrgyz Republic or Tajikistan.,Kyrgyz Republic,synthetic_demo_seed_62
+insurance_contracts.csv,term_years,integer,text,yes,Contract term. The master term is 3 years.,3,synthetic_demo_seed_62
+insurance_contracts.csv,currency,text,text,yes,Always USD in the valid book.,USD,synthetic_demo_seed_62
+insurance_contracts.csv,eq_principal_usd,integer,USD,yes,Earthquake principal in USD.,80000000,synthetic_demo_seed_62
+insurance_contracts.csv,precip_principal_usd,integer,USD,yes,Precipitation principal in USD.,16000000,synthetic_demo_seed_62
+insurance_contracts.csv,attachment_usd,integer,USD,yes,Loss level where this layer starts. Masters attach at the first severity step.,0,synthetic_demo_seed_62
+insurance_contracts.csv,deductible_usd,integer,USD,yes,Deductible. Masters use 0 so the step schedule is the whole rule.,0,synthetic_demo_seed_62
+insurance_contracts.csv,eq_cap_usd,integer,USD,yes,Earthquake payout cap.,80000000,synthetic_demo_seed_62
+insurance_contracts.csv,payout_limit_usd,integer,USD,yes,Maximum payment under this contract.,88000000,synthetic_demo_seed_62
+insurance_contracts.csv,eq_step_1_usd,integer,USD,yes,Earthquake payout at severity 1.,12000000,synthetic_demo_seed_62
+insurance_contracts.csv,eq_step_2_usd,integer,USD,yes,Earthquake payout at severity 2.,32000000,synthetic_demo_seed_62
+insurance_contracts.csv,eq_step_3_usd,integer,USD,yes,Earthquake payout at severity 3.,80000000,synthetic_demo_seed_62
+insurance_contracts.csv,precip_step_1_usd,integer,USD,yes,Precipitation payout at severity 1.,6400000,synthetic_demo_seed_62
+insurance_contracts.csv,precip_step_2_usd,integer,USD,yes,Precipitation payout at severity 2.,16000000,synthetic_demo_seed_62
+insurance_contracts.csv,aggregation,text,text,yes,How annual steps become a term payment.,earthquake sums annual steps up to the earthquake cap; precipitation pays the hi,synthetic_demo_seed_62
+insurance_contracts.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,valid,synthetic_demo_seed_62
+insurance_contracts.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,yes,synthetic_demo_seed_62
+insurance_contracts.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+insurance_contracts.csv,notes,text,text,yes,Short caveat for the row.,Illustrative master contract. Not an official ADB schedule.,synthetic_demo_seed_62
+scenario_data.csv,scenario_id,text,text,yes,Scenario slug.,base,synthetic_demo_seed_62
+scenario_data.csv,scenario_name,text,text,yes,Display name.,Base,synthetic_demo_seed_62
+scenario_data.csv,theme,text,text,yes,Demonstration theme from the scenario library.,Baseline conditions,synthetic_demo_seed_62
+scenario_data.csv,risk_classification,text,text,yes,"low, medium, high or extreme, assigned from the enumerated metrics.",high,synthetic_demo_seed_62
+scenario_data.csv,dependence_mode,text,text,yes,"common_shock, independent or regional_cluster.",common_shock,synthetic_demo_seed_62
+scenario_data.csv,shock_share,number,probability or multiplier,yes,Scenario common-shock share.,0.3,synthetic_demo_seed_62
+scenario_data.csv,eq_probability_scale,number,probability or multiplier,yes,Multiplier on earthquake occurrence.,1.0,synthetic_demo_seed_62
+scenario_data.csv,precip_probability_scale,number,probability or multiplier,yes,Multiplier on precipitation occurrence.,1.0,synthetic_demo_seed_62
+scenario_data.csv,precip_severity_1_fraction,number,probability or multiplier,yes,Optional precipitation step override.,,synthetic_demo_seed_62
+scenario_data.csv,precip_severity_2_fraction,number,probability or multiplier,yes,Optional precipitation step override.,,synthetic_demo_seed_62
+scenario_data.csv,threshold_usd,integer,USD,yes,Strict portfolio threshold T for P(L > T).,25000000,synthetic_demo_seed_62
+scenario_data.csv,model_book,text,text,yes,Demonstration field.,baseline,synthetic_demo_seed_62
+scenario_data.csv,app_bundle,text,text,yes,yes if this scenario is in the uploadable workbook on the baseline book.,yes,synthetic_demo_seed_62
+scenario_data.csv,expected_loss_usd,number,USD,yes,Demonstration field.,23436841.761946667,synthetic_demo_seed_62
+scenario_data.csv,joint_attachment_probability,number,probability or multiplier,yes,Demonstration field.,0.3872089271656295,synthetic_demo_seed_62
+scenario_data.csv,exceedance_probability,number,probability or multiplier,yes,Demonstration field.,0.3323420714321972,synthetic_demo_seed_62
+scenario_data.csv,expected_stop_loss_usd,number,USD,yes,Demonstration field.,8372118.475366956,synthetic_demo_seed_62
+scenario_data.csv,both_exhausted_probability,number,probability or multiplier,yes,Demonstration field.,6.409579740064485e-05,synthetic_demo_seed_62
+scenario_data.csv,description,text,text,yes,Plain-language description. Not a historical event.,Baseline synthetic marginals and a common-shock share of 0.30. Contract rules ar,synthetic_demo_seed_62
+scenario_data.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,valid,synthetic_demo_seed_62
+scenario_data.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,yes,synthetic_demo_seed_62
+scenario_data.csv,assumption_label,text,text,yes,Synthetic label stored with the scenario.,synthetic_demo_seed_62,synthetic_demo_seed_62
+scenario_data.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+reference_results.csv,scenario_id,text,text,yes,Scenario slug.,base,synthetic_demo_seed_62
+reference_results.csv,metric,text,text,yes,"expected_loss, joint_attachment_probability, exceedance_probability, expected_stop_loss or both_exhausted_probability.",expected_loss,synthetic_demo_seed_62
+reference_results.csv,value,number,text,yes,Enumerated synthetic value.,23436841.761946667,synthetic_demo_seed_62
+reference_results.csv,tolerance,number,text,yes,"0.01 USD for money, 1e-9 for probabilities.",0.01,synthetic_demo_seed_62
+reference_results.csv,units,text,text,yes,USD or probability.,USD,synthetic_demo_seed_62
+reference_results.csv,threshold_usd,integer,USD,yes,Strict portfolio threshold T for P(L > T).,25000000,synthetic_demo_seed_62
+reference_results.csv,model_book,text,text,yes,Demonstration field.,baseline,synthetic_demo_seed_62
+reference_results.csv,risk_classification,text,text,yes,"low, medium, high or extreme, assigned from the enumerated metrics.",high,synthetic_demo_seed_62
+reference_results.csv,source,text,text,yes,internal_exact_enumeration.,internal_exact_enumeration,synthetic_demo_seed_62
+reference_results.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_demo_seed_62,synthetic_demo_seed_62
+reference_results.csv,notes,text,text,yes,Short caveat for the row.,Synthetic demonstration reference from exact enumeration of this scenario. Not a,synthetic_demo_seed_62
+invalid_records.csv,invalid_record_id,text,text,yes,Id of a held-out invalid example.,INV-001,synthetic_demo_seed_62
+invalid_records.csv,source_file,text,text,yes,Which demonstration file the invalid example imitates.,exposure_data,synthetic_demo_seed_62
+invalid_records.csv,referenced_id,text,text,yes,Id the invalid example points at.,EXP-BAD-MISSING,synthetic_demo_seed_62
+invalid_records.csv,data_quality_flag,text,text,yes,valid on demonstration rows. Invalid examples live in invalid_records.csv.,missing_value,synthetic_demo_seed_62
+invalid_records.csv,include_in_calculations,text,text,yes,yes for demonstration rows. Invalid rows are no.,no,synthetic_demo_seed_62
+invalid_records.csv,problem,text,text,yes,What is wrong with the example.,insured_exposure_usd is blank,synthetic_demo_seed_62
+invalid_records.csv,data_label,text,text,yes,Marks the row as synthetic.,synthetic_invalid_example,synthetic_demo_seed_62
+invalid_records.csv,notes,text,text,yes,Short caveat for the row.,Held out of the demonstration calculations. Use only to show validation.,synthetic_demo_seed_62

@@ -1,0 +1,3 @@
+dependence_mode,hazard,shock_share_of_min_marginal,notes,data_label
+common_shock,earthquake,0.30,Baseline share of the smaller country occurrence probability assigned to a shared Marshall-Olkin shock. Country marginals are preserved. Synthetic demo assumption; not an observed dependence estimate.,synthetic_demo
+common_shock,precipitation,0.30,Baseline share for precipitation using the same common-shock construction. Synthetic demo assumption; not an observed dependence estimate.,synthetic_demo
