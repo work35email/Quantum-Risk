@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} · QuantumRisk Analytics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  {% if refresh %}<meta http-equiv="refresh" content="2">{% endif %}
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <div class="brand-block">
+        <div class="mark">QR</div>
+        <div>
+          <div class="brand">QuantumRisk Analytics</div>
+          <div class="brand-sub">Catastrophe analytics</div>
+        </div>
+      </div>
+      <nav>
+        {% for href, label in nav %}
+        <a href="{{ href }}" class="{{ 'active' if active == label else '' }}">{{ label }}</a>
+        {% endfor %}
+      </nav>
+      {% if current_user %}
+      <div class="account">
+        <div class="who">{{ current_user.display_name }}</div>
+        <span class="badge">{{ current_user.role }}</span>
+        <form method="post" action="{{ url_for('logout') }}">
+          <button type="submit">Sign out</button>
+        </form>
+      </div>
+      {% endif %}
+      <p class="sidebar-note">Synthetic demonstration book. Estimates are not guaranteed payouts and are not an official benchmark.</p>
+    </aside>
+    <div class="workspace">
+      <header class="topbar">
+        <p class="kicker">QuantumRisk Analytics</p>
+        <h1>{{ title }}</h1>
+      </header>
+      <main>
+        {% block content %}{% endblock %}
+      </main>
+    </div>
+  </div>
+</body>
+</html>

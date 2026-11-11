@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Runs and jobs are stored in the local SQLite file. Each job keeps a snapshot of the tables, so a later upload does not change a completed result.</p>
+<p><a class="button secondary" href="{{ url_for('export_history') }}">Download history CSV</a></p>
+<section class="panel">
+  <h2>Jobs</h2>
+  {% if jobs %}
+  <div class="table-scroll">
+  <table>
+    <thead><tr><th>When</th><th>Kind</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for job in jobs %}
+      <tr>
+        <td>{{ job.created_utc }}</td>
+        <td>{{ job.kind }}</td>
+        <td><span class="badge badge-{{ 'ok' if job.status == 'succeeded' else 'warn' if job.status == 'failed' else 'info' }}">{{ job.status }}</span></td>
+        <td><a href="{{ url_for('job_page', job_id=job.job_id) }}">Open</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="empty">No jobs yet. Queue a simulation from Run or Compare.</p>
+  {% endif %}
+</section>
+<section class="panel">
+  <h2>Runs</h2>
+  {% if history %}
+  {{ history | safe }}
+  {% else %}
+  <p class="empty">No saved runs yet.</p>
+  {% endif %}
+</section>
+{% endblock %}

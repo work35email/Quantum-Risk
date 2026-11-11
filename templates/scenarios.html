@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">The built-in scenarios stay in the file. A new id is added to the active tables and can be run like the others.</p>
+{% if message %}<div class="notice">{{ message }}</div>{% endif %}
+{% if errors %}<div class="error"><ul class="clean">{% for item in errors %}<li>{{ item }}</li>{% endfor %}</ul></div>{% endif %}
+<div class="table-scroll">
+<table>
+  <thead><tr><th>Id</th><th>Name</th><th>Mode</th><th class="num">Shock share</th><th class="num">Precip scale</th><th>Description</th></tr></thead>
+  <tbody>
+  {% for spec in scenarios %}
+  <tr>
+    <td>{{ spec.scenario_id }}</td>
+    <td>{{ spec.scenario_name }}</td>
+    <td><span class="badge">{{ spec.dependence_mode }}</span></td>
+    <td class="num">{{ spec.shock_share }}</td>
+    <td class="num">{{ spec.precip_probability_scale }}</td>
+    <td>
+      {% if spec.description|length > 72 %}
+      <details class="note">
+        <summary title="{{ spec.description }}">{{ spec.description[:61] }}…</summary>
+        <p>{{ spec.description }}</p>
+      </details>
+      {% else %}
+      {{ spec.description }}
+      {% endif %}
+    </td>
+  </tr>
+  {% endfor %}
+  </tbody>
+</table>
+</div>
+{% if can_edit %}
+<form class="panel" method="post">
+  <h2>Create a scenario</h2>
+  <div class="form-grid">
+    <div>
+      <label>Id (letters, numbers, underscore)</label>
+      <input name="scenario_id" required pattern="[a-z0-9_]+">
+    </div>
+    <div>
+      <label>Name</label>
+      <input name="scenario_name" required>
+    </div>
+    <div>
+      <label>Dependence mode</label>
+      <select name="dependence_mode">
+        <option value="common_shock">common_shock</option>
+        <option value="independent">independent</option>
+      </select>
+    </div>
+    <div>
+      <label>Shock share (0 to 1; independent must be 0)</label>
+      <input name="shock_share" type="number" min="0" max="1" step="0.01" value="0.30" required>
+    </div>
+    <div>
+      <label>Earthquake probability scale</label>
+      <input name="eq_probability_scale" type="number" min="0.01" max="5" step="0.01" value="1" required>
+    </div>
+    <div>
+      <label>Precipitation probability scale</label>
+      <input name="precip_probability_scale" type="number" min="0.01" max="5" step="0.01" value="1" required>
+    </div>
+    <div class="wide">
+      <label>Description</label>
+      <textarea name="description" required>User-defined synthetic scenario.</textarea>
+    </div>
+  </div>
+  <button type="submit">Add scenario</button>
+</form>
+{% else %}
+<p class="notice">You can review the scenarios. Only an administrator can add one.</p>
+{% endif %}
+{% endblock %}

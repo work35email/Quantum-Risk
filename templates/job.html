@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="section-head">
+  <div>
+    <p class="muted">{{ job.kind }} · {{ job.job_id }}</p>
+  </div>
+  <span class="badge badge-{{ 'ok' if job.status == 'succeeded' else 'warn' if job.status == 'failed' else 'info' }}">{{ job.status }}</span>
+</div>
+{% if job.status in ["queued", "running"] %}
+<div class="notice">The local worker is still running this job. This page refreshes automatically.</div>
+{% endif %}
+{% if job.error %}
+<div class="error"><pre>{{ job.error }}</pre></div>
+{% endif %}
+{% if not blocks and job.status == "succeeded" %}
+<p class="empty">The job finished without a result block.</p>
+{% endif %}
+{% for block in blocks %}
+<section class="panel">
+  <h2>{{ block.title }}</h2>
+  {% if block.valid %}
+  <div class="metric-grid">
+    {% for item in block.metrics %}
+    <div class="metric">
+      <span>{{ item.label }}</span>
+      <strong>{{ item.value }}</strong>
+      {% if item.detail %}<span class="detail">{{ item.detail }}</span>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="meta">
+    <span>Runtime {{ block.runtime }} s</span>
+    <span>Peak memory {{ block.memory }}</span>
+    <span>{{ block.evaluations }} {{ block.unit }}</span>
+  </div>
+  <div class="actions">
+    <a class="button secondary" href="{{ url_for('export_json', run_id=block.run_id) }}">JSON</a>
+    <a class="button secondary" href="{{ url_for('export_csv', run_id=block.run_id) }}">CSV</a>
+    <a class="button secondary" href="{{ url_for('export_pdf', run_id=block.run_id) }}">PDF</a>
+  </div>
+  {% else %}
+  <div class="error">This estimator did not produce a risk estimate.</div>
+  {% endif %}
+  {% if block.notes %}
+  <details class="fold" open>
+    <summary>Notes <span>{{ block.notes|length }}</span></summary>
+    <ul class="clean">{% for note in block.notes %}<li>{{ note }}</li>{% endfor %}</ul>
+  </details>
+  {% endif %}
+</section>
+{% if block.charts %}
+<div class="chart-grid">
+  {% for chart in block.charts %}<div class="chart">{{ chart | safe }}</div>{% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+{% if comparisons %}
+<div class="chart-grid">
+  {% for chart in comparisons %}<div class="chart">{{ chart | safe }}</div>{% endfor %}
+</div>
+{% endif %}
+{% endblock %}

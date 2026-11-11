@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">The job is stored in SQLite and executed locally. This page returns as soon as the job is queued.</p>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+{% if can_run %}
+<form class="panel" method="post">
+  <h2>Simulation</h2>
+  <div class="form-grid">
+    <div>
+      <label>Scenario</label>
+      <select name="scenario_id">
+        {% for spec in scenarios %}<option value="{{ spec.scenario_id }}">{{ spec.scenario_name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>Estimator</label>
+      <select name="method">
+        {% for key, label in methods %}<option value="{{ key }}">{{ label }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label>Sample budget</label>
+      <input name="n_samples" type="number" min="2" value="4096">
+    </div>
+    <div>
+      <label>Seed</label>
+      <input name="seed" type="number" value="42">
+    </div>
+    <div>
+      <label>Threshold T (strict P(L &gt; T))</label>
+      <input name="threshold" type="number" min="0" step="1" value="25000000">
+    </div>
+    <div>
+      <label>Optional shock-share override</label>
+      <input name="shock_share" type="number" min="0" max="1" step="0.01" placeholder="leave blank to use the scenario">
+    </div>
+    <div class="wide">
+      <label>Optional precipitation-scale override</label>
+      <input name="precip_scale" type="number" min="0.01" max="5" step="0.01" placeholder="leave blank to use the scenario">
+    </div>
+  </div>
+  <button type="submit">Queue simulation</button>
+</form>
+{% else %}
+<p class="notice">Your role can review results. An analyst or an administrator runs simulations.</p>
+{% endif %}
+{% endblock %}

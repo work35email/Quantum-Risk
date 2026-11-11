@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Baseline book, exposure composition and the split between classical simulation and the tensor-train check.</p>
+<div class="notice">{{ disclaimer }}</div>
+{% if errors %}
+<div class="error">
+  <strong>The active tables are not valid.</strong>
+  <ul class="clean">{% for message in errors %}<li>{{ message }}</li>{% endfor %}</ul>
+</div>
+{% else %}
+<div class="section-head">
+  <h2>{{ model.scenario_name }}</h2>
+  <span class="badge badge-ok">Tables valid</span>
+</div>
+<p>{{ model.description }}</p>
+<p class="muted">{{ model.countries | join(", ") }} · {{ model.term_years }}-year term · {{ model.currency }} · {{ source }}</p>
+<div class="kpi-grid">
+  {% for item in kpis %}
+  <article class="kpi">
+    <div class="kpi-icon" aria-hidden="true">
+      {% if item.icon == "exposure" %}
+      <svg viewBox="0 0 24 24"><rect x="3" y="10" width="7" height="11"/><rect x="14" y="3" width="7" height="18"/></svg>
+      {% elif item.icon == "countries" %}
+      <svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="3"/><circle cx="16" cy="9" r="3"/><path d="M4 19c1.2-2.4 2.8-3.5 4-3.5S11 16.6 12 19M12 19c1.2-2.4 2.8-3.5 4-3.5S19.8 16.6 21 19"/></svg>
+      {% elif item.icon == "term" %}
+      <svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="1"/><path d="M8 3v4M16 3v4M4 10h16"/></svg>
+      {% elif item.icon == "hazard" %}
+      <svg viewBox="0 0 24 24"><path d="M12 3l8 16H4L12 3z"/><path d="M12 10v4"/></svg>
+      {% else %}
+      <svg viewBox="0 0 24 24"><path d="M5 6h14M5 12h14M5 18h9"/></svg>
+      {% endif %}
+    </div>
+    <span class="label">{{ item.label }}</span>
+    <span class="value">{{ item.value }}</span>
+    <span class="hint">{{ item.hint }}</span>
+  </article>
+  {% endfor %}
+</div>
+{% if charts %}
+<div class="chart-grid">
+  {% for chart in charts %}<div class="chart">{{ chart | safe }}</div>{% endfor %}
+</div>
+{% endif %}
+{% if parameters_html %}
+<section class="panel">
+  <h2>Resolved baseline parameters</h2>
+  <p class="muted">Values used by the base scenario after the contract and hazard tables are applied.</p>
+  {{ parameters_html | safe }}
+</section>
+{% endif %}
+{% endif %}
+<div class="split">
+  <section class="panel">
+    <h2>Classical simulation</h2>
+    <p>Exact enumeration, Monte Carlo, scrambled Sobol, stratified sampling and importance sampling estimate the same contract.</p>
+    <p>Tail-aware proposals draw more often from rare years in which several countries are hit hard, then correct the estimates with likelihood ratios.</p>
+  </section>
+  <section class="panel">
+    <h2>Tensor train / MPS</h2>
+    <p>Tensor train / MPS is a separate experiment. A tensor network writes a large probability table as a chain of smaller arrays. Quimb contracts that chain. Cotengra chooses the order of the contraction.</p>
+    <p>Agreement with exact enumeration is a validity check, not a faster or quantum result.</p>
+  </section>
+</div>
+{% endblock %}

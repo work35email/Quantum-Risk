@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign in · QuantumRisk Analytics</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="login-wrap">
+    <section class="panel login-card">
+      <div class="brand-lockup">
+        <div class="mark">QR</div>
+        <div>
+          <div class="brand">QuantumRisk Analytics</div>
+          <div class="brand-sub">Catastrophe analytics</div>
+        </div>
+      </div>
+      <h1>Sign in</h1>
+      <p class="muted">Local accounts on this machine. Estimates remain demonstration results, not guaranteed payouts.</p>
+      {% if error %}<div class="error">{{ error }}</div>{% endif %}
+      <form method="post">
+        <input type="hidden" name="next" value="{{ next }}">
+        <label>Username</label>
+        <input name="username" autocomplete="username" required>
+        <label>Password</label>
+        <input name="password" type="password" autocomplete="current-password" required>
+        <button type="submit">Sign in</button>
+      </form>
+      <h2>Demonstration accounts</h2>
+      <ul class="clean">
+        {% for username, display_name, role, password in accounts %}
+        <li><strong>{{ username }}</strong> · {{ role }} · password {{ password }}</li>
+        {% endfor %}
+      </ul>
+      <p class="muted">An administrator replaces data and accounts. An analyst runs simulations. A reviewer can read results and exports.</p>
+    </section>
+  </div>
+</body>
+</html>

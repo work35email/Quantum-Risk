@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Upload CSV, Excel or JSON. A workbook or JSON bundle can replace every table at once. Invalid files are rejected and the previous tables stay active.</p>
+{% if message %}<div class="notice">{{ message }}</div>{% endif %}
+{% if errors %}
+<div class="error"><ul class="clean">{% for message in errors %}<li>{{ message }}</li>{% endfor %}</ul></div>
+{% else %}
+<div class="notice">Active tables passed validation. {{ source }}</div>
+{% endif %}
+{% if warnings %}
+<div class="panel"><h2>Warnings</h2><ul class="clean">{% for message in warnings %}<li>{{ message }}</li>{% endfor %}</ul></div>
+{% endif %}
+{% if can_edit %}
+<form class="panel" method="post" enctype="multipart/form-data">
+  <h2>Replace tables</h2>
+  <div class="form-grid">
+    <div class="wide">
+      <label>Bundle (.xlsx with one sheet per table, or .json)</label>
+      <input type="file" name="bundle" accept=".xlsx,.json,.csv">
+    </div>
+    {% for name in tables %}
+    <div>
+      <label>{{ name }} (.csv, .xlsx or .json)</label>
+      <input type="file" name="{{ name }}" accept=".csv,.xlsx,.json">
+    </div>
+    {% endfor %}
+  </div>
+  <button type="submit">Load data</button>
+</form>
+{% else %}
+<p class="notice">You can review the tables. Only an administrator can replace them.</p>
+{% endif %}
+{% for name, total, shown, preview in previews %}
+<details class="fold" {% if loop.first or name == "contracts" %}open{% endif %}>
+  <summary>{{ name }} <span>{{ shown }} of {{ total }} rows</span></summary>
+  {{ preview | safe }}
+</details>
+{% endfor %}
+{% endblock %}

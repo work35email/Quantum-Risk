@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<p class="lede">Method comparison runs every estimator on one scenario. Scenario comparison runs one estimator on every scenario, including ones you added.</p>
+{% if error %}<div class="error">{{ error }}</div>{% endif %}
+{% if can_run %}
+<div class="split">
+  <form class="panel" method="post">
+    <input type="hidden" name="kind" value="compare_methods">
+    <h2>Estimators</h2>
+    <p class="muted">Same scenario, every estimator, with sampling error where the method has one.</p>
+    <label>Scenario</label>
+    <select name="scenario_id">{% for spec in scenarios %}<option value="{{ spec.scenario_id }}">{{ spec.scenario_name }}</option>{% endfor %}</select>
+    <label>Sample budget</label>
+    <input name="n_samples" type="number" min="2" value="1024">
+    <label>Seed</label>
+    <input name="seed" type="number" value="42">
+    <label>Threshold</label>
+    <input name="threshold" type="number" min="0" step="1" value="25000000">
+    <button type="submit">Queue method comparison</button>
+  </form>
+  <form class="panel" method="post">
+    <input type="hidden" name="kind" value="compare_scenarios">
+    <h2>Scenarios</h2>
+    <p class="muted">One estimator across the scenario library. The result chart ranks expected loss and plots it against exceedance.</p>
+    <label>Estimator</label>
+    <select name="method">{% for key, label in methods %}<option value="{{ key }}">{{ label }}</option>{% endfor %}</select>
+    <label>Sample budget</label>
+    <input name="n_samples" type="number" min="2" value="1024">
+    <label>Seed</label>
+    <input name="seed" type="number" value="42">
+    <label>Threshold</label>
+    <input name="threshold" type="number" min="0" step="1" value="25000000">
+    <button type="submit">Queue scenario comparison</button>
+  </form>
+</div>
+{% else %}
+<p class="notice">Your role can review results. An analyst or an administrator runs comparisons.</p>
+{% endif %}
+{% endblock %}
